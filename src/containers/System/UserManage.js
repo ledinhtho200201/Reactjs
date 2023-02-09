@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers } from '../../services/userService';
+import { getAllUsers, createNewUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 class UserManage extends Component {
 
@@ -15,6 +15,10 @@ class UserManage extends Component {
     }
 
     async componentDidMount() {
+        await this.getAllUsersFromReact();
+    }
+
+    getAllUsersFromReact = async () => {
         let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {
             this.setState({
@@ -35,6 +39,22 @@ class UserManage extends Component {
         })
     }
 
+    createNewuser = async (data) => {
+        try {
+            let response = await createNewUserService(data);
+            if (response && response.errCode !== 0) {
+                alert(response.errMessage)
+            } else {
+                await this.getAllUsersFromReact();
+                this.setState({
+                    isOpenModalUser: false
+                })
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     /** Life cycle
      * Run component:
      * 1. Run constructor -> init state
@@ -51,10 +71,10 @@ class UserManage extends Component {
                 <ModalUser
                     isOpen={this.state.isOpenModalUser}
                     toggleFromParent={this.toggleUserModal}
-                    test={'avc'}
+                    createNewuser={this.createNewuser}
                 />
                 <div className="title">Manage users with Thold</div>
-                <div className='mx1'>
+                <div className='mx-1'>
                     <button
                         className='btn btn-primary'
                         onClick={() => this.handleAddNewUser()}
@@ -64,31 +84,33 @@ class UserManage extends Component {
                 </div>
                 <div className='users-table mt-3 mx-1'>
                     <table id="customers">
-                        <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                        {arrUsers && arrUsers.map((item, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{item.firstName}</td>
-                                    <td>{item.lastName}</td>
-                                    <td>{item.address}</td>
-                                    <td>{item.email}</td>
-                                    <td>
-                                        <button className='btn-edit'>
-                                            <i className="fas fa-pencil-alt"></i></button>
-                                        <button className='btn-delete'>
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                        }
+                        <tbody>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                            {arrUsers && arrUsers.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.firstName}</td>
+                                        <td>{item.lastName}</td>
+                                        <td>{item.address}</td>
+                                        <td>{item.email}</td>
+                                        <td>
+                                            <button className='btn-edit'>
+                                                <i className="fas fa-pencil-alt"></i></button>
+                                            <button className='btn-delete'>
+                                                <i className="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                            }
+                        </tbody>
                     </table>
                 </div>
             </div>
