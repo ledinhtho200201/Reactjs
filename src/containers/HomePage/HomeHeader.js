@@ -38,13 +38,13 @@ class HomeHeader extends Component {
                             </div>
                             <div className='child-content'>
                                 <div><b><FormattedMessage id="home-header.fee" /></b></div>
-                                <div className='subs-title'><FormattedMessage id="home-header.check-health" /></div>
+                                <div className='subs-title'><FormattedMessage id="home-header.check-health-facility" /></div>
                             </div>
                         </div>
                         <div className='right-content'>
                             <div className='support'>
                                 <i className="fas fa-question-circle"></i>
-                                <FormattedMessage id="support" />
+                                <FormattedMessage id="home-header.support" />
                             </div>
                             <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
                             <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
