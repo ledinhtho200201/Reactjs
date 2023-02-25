@@ -69,6 +69,12 @@
                         }
                     }
                 }
+                &.active {
+                    a {
+                        color: rgb(233, 120, 14) !important;
+                    }
+                    background: #ededed;
+                }
                 &.active span {
                     font-weight: 500;
                     color: $colormain;
