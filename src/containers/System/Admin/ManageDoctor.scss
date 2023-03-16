@@ -1,39 +1,55 @@
-.manage-doctor-container{
+.manage-doctor-container {
     padding: 5px;
 
-    .manage-doctor-title{
-        text-align: center;
+    .manage-doctor-title {
+        text-align    : center;
         text-transform: uppercase;
-        font-weight: 600;
-        margin: 15px 0;
-        font-size: 20px;
+        font-weight   : 600;
+        margin        : 15px 0;
+        font-size     : 20px;
     }
 
     .more-infor {
         display: flex;
-        gap: 15px;
+        gap    : 15px;
         padding: 15px;
 
-        .content-left{
+        .content-left {
             width: 40%;
         }
 
-        .content-right{
+        .content-right {
             width: 60%;
         }
     }
 
     .save-content-doctor {
-        margin-top: 20px;
+        margin-top   : 20px;
         margin-bottom: 30px;
         border-radius: 5px;
-        border: none;
-        outline: none;
-        padding: 5px;
-        background: orange;
-        cursor: pointer;
+        border       : none;
+        outline      : none;
+        padding      : 5px;
+        background   : orange;
+        cursor       : pointer;
 
-        &:hover{
+        &:hover {
+            opacity: 0.9
+        }
+    }
+
+    .create-content-doctor {
+        margin-top   : 20px;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        border       : none;
+        outline      : none;
+        padding      : 5px;
+        color        : white;
+        background   : rgb(11, 93, 216);
+        cursor       : pointer;
+
+        &:hover {
             opacity: 0.9
         }
     }
