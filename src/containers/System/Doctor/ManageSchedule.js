@@ -132,14 +132,21 @@ class Doctor extends Component {
             formattedDate: formattedDate
         })
 
-        console.log('thold check result', result)
-        console.log('thold check saveBulkScheduleDoctor', res)
+        if (res && res.errCode === 0) {
+            toast.success('save Infor succeed!');
+        } else {
+            toast.error('error saveBulkScheduleDoctor')
+            console.log('error saveBulkScheduleDoctor >>> res: ', res)
+        }
+        // console.log('thold check result', result)
+        // console.log('thold check saveBulkScheduleDoctor', res)
     }
 
     render() {
         let { rangeTime } = this.state
         let { language } = this.props
-        console.log('thold check state', this.state)
+        let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+        // console.log('thold check state', this.state)
 
         return (
             <div className='manage-schedule-container'>
@@ -162,7 +169,7 @@ class Doctor extends Component {
                                 onChange={this.handleOnchangeDatePicker}
                                 className='form-control'
                                 value={this.state.currentDate}
-                                minDate={new Date()}
+                                minDate={yesterday}
                             />
                         </div>
                         <div className='col-12 pick-hour-container'>
