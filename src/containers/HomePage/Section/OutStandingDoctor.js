@@ -35,7 +35,7 @@ class OutStandingDoctor extends Component {
     }
 
     render() {
-        console.log('thold check topDoctorsRedux: ', this.props.topDoctorsRedux)
+        // console.log('thold check topDoctorsRedux: ', this.props.topDoctorsRedux)
         let allDoctors = this.state.arrDoctors;
         let { language } = this.props
         // allDoctors = allDoctors.concat(allDoctors).concat(allDoctors)

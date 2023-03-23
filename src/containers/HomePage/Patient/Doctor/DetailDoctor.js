@@ -4,6 +4,7 @@ import HomeHeader from '../../HomeHeader';
 import './DetailDoctor.scss';
 import { getDetailInforDoctor } from '../../../../services/userService'
 import { LANGUAGES } from '../../../../utils/constant';
+import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class DetailDoctor extends Component {
                     detailDoctor: res.data
                 })
             }
-            console.log('thold: res: ', res)
+            // console.log('thold: res: ', res)
 
         }
     }
@@ -32,7 +33,7 @@ class DetailDoctor extends Component {
     }
 
     render() {
-        console.log('thold check state: ', this.state)
+        // console.log('thold check state: ', this.state)
         let { language } = this.props
         let { detailDoctor } = this.state
         let nameVi = '', nameEn = '';
@@ -67,7 +68,14 @@ class DetailDoctor extends Component {
                         </div>
                     </div>
                     <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule
+                                doctorIdFromParent={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}
+                            />
+                        </div>
+                        <div className='content-right'>
 
+                        </div>
                     </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.contentHTML &&
