@@ -58,10 +58,16 @@ class ManageSpecialty extends Component {
         }
     }
 
-    handleSavenewSpecialty = async () => {
+    handleSaveNewSpecialty = async () => {
         let res = await createNewSpecialty(this.state)
         if (res && res.errCode === 0) {
             toast.success('Add new specialty successfully!')
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: '',
+            })
         } else {
             toast.error('Something wrongs...!')
             console.log('check res: ', res)
@@ -96,7 +102,7 @@ class ManageSpecialty extends Component {
                     </div>
                     <div className='col-12'>
                         <button className='btn-save-specialty'
-                            onClick={() => this.handleSavenewSpecialty()}
+                            onClick={() => this.handleSaveNewSpecialty()}
                         >Save</button>
                     </div>
                 </div>
