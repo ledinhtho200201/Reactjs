@@ -158,7 +158,7 @@ class BookingModal extends Component {
             doctorId = dataTime.doctorId
         }
         // console.log('data props from modal: ', this.props)
-        console.log('thold check dataTime: ', dataTime)
+        // console.log('thold check dataTime: ', dataTime)
 
         return (
             < Modal
