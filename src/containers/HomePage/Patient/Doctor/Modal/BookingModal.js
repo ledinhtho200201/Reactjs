@@ -106,7 +106,8 @@ class BookingModal extends Component {
             email: this.state.email,
             address: this.state.address,
             reason: this.state.reason,
-            date: date,
+            date: this.props.dataTime.date,
+            birthday: date,
             selectedGender: this.state.selectedGender.value,
             doctorId: this.state.doctorId,
             timeType: this.state.timeType,
@@ -116,10 +117,10 @@ class BookingModal extends Component {
         })
 
         if (res && res.errCode === 0) {
-            toast.success('Booking a new appointment suceed!');
+            toast.success('Booking a new appointment succeed!');
             this.props.closeBookingModal();
         } else {
-            toast.error('Booking a new appointment suceed!')
+            toast.error('Booking a new appointment error!')
         }
 
         console.log('thold hit confirm button: ', this.state)
@@ -159,6 +160,7 @@ class BookingModal extends Component {
         }
         // console.log('data props from modal: ', this.props)
         // console.log('thold check dataTime: ', dataTime)
+        console.log('state', this.state)
 
         return (
             < Modal

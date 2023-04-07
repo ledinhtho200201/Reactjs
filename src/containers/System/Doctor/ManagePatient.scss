@@ -22,6 +22,25 @@
                 text-align: left;
                 padding   : 8px;
             }
+
+            button {
+                border : none;
+                outline: none;
+                cursor : pointer;
+            }
+
+            .mp-btn-confirm {
+                margin-right : 8px;
+                height       : 30px;
+                border-radius: 3px;
+                background   : rgb(177, 185, 67);
+            }
+
+            .mp-btn-remedy {
+                height       : 30px;
+                border-radius: 3px;
+                background   : rgb(72, 179, 164);
+            }
         }
     }
 }
